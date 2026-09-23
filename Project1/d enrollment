@@ -1,0 +1,16 @@
+                         Table "public.course"
+    Column    |          Type          | Collation | Nullable | Default 
+--------------+------------------------+-----------+----------+---------
+ courseid     | character varying(10)  |           | not null | 
+ coursename   | character varying(100) |           | not null | 
+ credits      | integer                |           | not null | 
+ departmentid | character varying(10)  |           | not null | 
+ instructorid | character varying(10)  |           | not null | 
+Indexes:
+    "course_pkey" PRIMARY KEY, btree (courseid)
+Foreign-key constraints:
+    "fk_course_department" FOREIGN KEY (departmentid) REFERENCES department(departmentid)
+    "fk_course_instructor" FOREIGN KEY (instructorid) REFERENCES instructor(instructorid)
+Referenced by:
+    TABLE "enrollment" CONSTRAINT "fk_enrollment_course" FOREIGN KEY (courseid) REFERENCES course(courseid)
+
